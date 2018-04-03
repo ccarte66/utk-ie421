@@ -41,4 +41,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// var cors = require('cors')
+// app.use(cors())//use this after the variable declaration
+
+// // cors
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
 module.exports = app;

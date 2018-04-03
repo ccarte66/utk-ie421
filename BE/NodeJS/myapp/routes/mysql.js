@@ -19,7 +19,17 @@ con.connect(function(err) {
 router.get('/', function(req, res, next) {
 	con.query("SELECT * FROM xli27.student", function (err, result, fields) {
     if (err) throw err;
-    console.log(result);
+    // console.log(result);
+    res.send(result);
+    //res.send('MySQL::Got Data!');
+  });
+});
+
+/*GET customers*/
+router.get('/customer', function(req, res, next) {
+  con.query("SELECT * FROM xli27.customer", function (err, result, fields) {
+    if (err) throw err;
+    // console.log(result);
     res.send(result);
     //res.send('MySQL::Got Data!');
   });
