@@ -29,9 +29,9 @@ router.get('/student', function(req, res, next) {
 router.post('/student', function(req, res, next) {
   var sql = con.query("INSERT INTO xli27.student set ? ", req.body, function (err, result, fields) {
     if (err) throw err;
-    // console.log(result);
+    
+    console.log(sql);
     res.send(result);
-    //res.send('MySQL::Got Data!');
   });
 });
 

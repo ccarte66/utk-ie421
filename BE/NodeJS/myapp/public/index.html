@@ -18,6 +18,7 @@ table tr:nth-child(even) {
  
 <div ng-app="myApp" ng-controller="customersCtrl">
 
+<h1> Hello, Class! </h1>
 <table>
   <tr ng-repeat="x in names">
     <td>{{ x.utid }}</td>
@@ -30,7 +31,7 @@ table tr:nth-child(even) {
 <script>
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
-   $http.get("mysql")
+   $http.get("mysql/student")
    .then(function (response) {
       $scope.names = response.data;
       // console.log(response.data);
