@@ -362,10 +362,22 @@ body, html {
   </div>
 </div>
 
+<div ng-controller="studentsInsertCtrl">
+  <div class="w3-container w3-light-grey" style="padding:128px 16px" id="insertStudents">
+    <h3 class="w3-center">STUDENTS</h3>
+    <form ng-submit="postStudent()">
+        utid: <input type="text" ng-model="utid" /><br/>
+        name: <input type="text" ng-model="student_name" /><br/>
+        gpa:  <input type="number" ng-model="gpa" /><br/>
+       <button type="submit">Add</button><br>
+    </form> 
+  </div>
+</div>
+
 <!-- Customers Section -->
-<div ng-controller="customersCtrl">
+<div ng-controller="customersCtrl"> <!-- name of controller-->
   <div class="w3-container w3-light-grey" style="padding:128px 16px" id="Customers">
-    <h3 class="w3-center">CUSTOMERS</h3>
+    <h3 class="w3-center">::CUSTOMERS::</h3>
     <table>
       <tr ng-repeat="x in customers">
         <td>{{ x.customer_name }}</td>
@@ -443,12 +455,23 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 <!-- Controllers -->
 <script>
 var app = angular.module('myApp', []);
+
 app.controller('studentsCtrl', function($scope, $http) {
-   $http.get("mysql")
+   $http.get("mysql/student")
    .then(function (response) {
       $scope.students = response.data;
       // console.log(response.data);
   });
+});
+
+app.controller('studentsInsertCtrl', function($scope, $http) {
+   $scope.postStudent = function (){
+      $http.post("mysql/student", {"utid":$scope.$utid, "student_name": $scope.$student_name, "gpa":$scope.$gpa})
+      .then(function (response) {
+        // $scope.students = response.data;
+        console.log($scope.$utid);
+      }
+    });
 });
 
 app.controller('customersCtrl', function($scope, $http) {

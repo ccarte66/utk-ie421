@@ -13,6 +13,9 @@ $ express --view=pug myapp
 $npm install
 $npm start
 
+
+$npm install -g nodemon
+
 - FE:: Put front end code in the /public folder
 
 https://www.w3schools.com/nodejs/nodejs_mysql.asp

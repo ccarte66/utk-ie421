@@ -16,8 +16,18 @@ con.connect(function(err) {
   });
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/student', function(req, res, next) {
 	con.query("SELECT * FROM xli27.student", function (err, result, fields) {
+    if (err) throw err;
+    // console.log(result);
+    res.send(result);
+    //res.send('MySQL::Got Data!');
+  });
+});
+
+/* Post student data. */
+router.post('/student', function(req, res, next) {
+  var sql = con.query("INSERT INTO xli27.student set ? ", req.body, function (err, result, fields) {
     if (err) throw err;
     // console.log(result);
     res.send(result);
